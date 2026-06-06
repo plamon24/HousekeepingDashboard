@@ -1,6 +1,0 @@
-{
-  "scripts": {
-    "start": "swa start . --api-location api"
-  },
-  "dependencies": {}
-}
