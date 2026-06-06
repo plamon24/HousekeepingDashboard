@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TVO Meeting Room Operations</title>
+  <link rel="stylesheet" href="./housekeeping.css" />
+</head>
+<body>
+  <main class="screen">
+    <header class="topbar">
+      <div>
+        <h1><span>TVO</span> Meeting Room Operations</h1>
+        <p>รายการห้องประชุมที่ต้องเตรียม วันนี้</p>
+      </div>
+      <div class="clock">
+        <div id="nowTime">--:-- น.</div>
+        <small id="todayText">--</small>
+      </div>
+    </header>
+
+    <section class="columns">
+      <div class="panel urgent">
+        <h2>🔔 รอเตรียม</h2>
+        <div id="waitingList" class="cards"></div>
+      </div>
+
+      <div class="panel preparing">
+        <h2>🚶 กำลังเตรียม</h2>
+        <div id="preparingList" class="cards"></div>
+      </div>
+
+      <div class="panel ready">
+        <h2>✅ พร้อมใช้งาน</h2>
+        <div id="readyList" class="cards"></div>
+      </div>
+    </section>
+
+    <section class="timelinePanel">
+      <h2>📅 ภาพรวมทั้งวัน</h2>
+      <div id="timeline" class="timeline"></div>
+    </section>
+
+    <footer class="summary">
+      <div class="sum readyBox">พร้อมใช้งาน <b id="readyCount">0</b> ห้อง</div>
+      <div class="sum preparingBox">กำลังเตรียม <b id="preparingCount">0</b> ห้อง</div>
+      <div class="sum waitingBox">รอเตรียม <b id="waitingCount">0</b> ห้อง</div>
+      <div class="sum updateBox">อัปเดตล่าสุด <b id="lastUpdate">--:--</b></div>
+    </footer>
+  </main>
+
+  <script src="./housekeeping.js"></script>
+</body>
+</html>

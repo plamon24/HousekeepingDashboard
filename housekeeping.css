@@ -1,0 +1,211 @@
+:root{
+  --bg:#071a2d;
+  --panel:#0c2742;
+  --line:rgba(255,255,255,.14);
+  --text:#fff;
+  --muted:#b8c7d9;
+  --red:#d91f2a;
+  --yellow:#f5b400;
+  --green:#159447;
+  --blue:#1772c9;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Segoe UI",Tahoma,sans-serif;
+  background:#000;
+  color:var(--text);
+  overflow:hidden;
+}
+.screen{
+  width:100vw;
+  height:100vh;
+  padding:28px 34px 24px;
+  background:radial-gradient(circle at top left,#103c68,var(--bg) 58%,#03101d);
+}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:22px;
+}
+h1{
+  margin:0;
+  font-size:44px;
+  line-height:1.05;
+  font-weight:800;
+}
+h1 span{color:#5ab0ff}
+.topbar p{
+  margin:8px 0 0;
+  font-size:25px;
+  font-weight:700;
+}
+.clock{text-align:right}
+.clock div{
+  font-size:46px;
+  font-weight:900;
+}
+.clock small{
+  font-size:22px;
+  font-weight:700;
+}
+.columns{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:14px;
+  height:36vh;
+}
+.panel{
+  border:2px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+  background:rgba(255,255,255,.05);
+}
+.panel h2{
+  margin:0;
+  padding:14px 18px;
+  text-align:center;
+  font-size:26px;
+}
+.urgent h2{background:linear-gradient(90deg,#b90e17,var(--red))}
+.preparing h2{background:linear-gradient(90deg,#b98400,var(--yellow));color:#071a2d}
+.ready h2{background:linear-gradient(90deg,#0b7333,var(--green))}
+.cards{
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  height:calc(100% - 62px);
+}
+.card{
+  display:grid;
+  grid-template-columns:118px 1fr;
+  gap:16px;
+  padding:17px 20px;
+  border-top:1px solid var(--line);
+  background:rgba(255,255,255,.92);
+  color:#07111f;
+}
+.card.empty{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:rgba(255,255,255,.65);
+  background:transparent;
+  font-size:24px;
+}
+.time{
+  font-size:30px;
+  font-weight:900;
+}
+.time small{
+  display:block;
+  margin-top:6px;
+  font-size:18px;
+  font-weight:600;
+}
+.room{
+  font-size:24px;
+  font-weight:900;
+}
+.meta{
+  margin-top:5px;
+  display:flex;
+  gap:22px;
+  font-size:17px;
+  font-weight:700;
+}
+.equip{
+  margin-top:12px;
+  font-size:17px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.timelinePanel{
+  margin-top:18px;
+  height:33vh;
+}
+.timelinePanel h2{
+  margin:0 0 10px;
+  font-size:25px;
+}
+.timeline{
+  position:relative;
+  height:calc(100% - 42px);
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+  background:rgba(0,0,0,.16);
+}
+.trow{
+  position:relative;
+  display:grid;
+  grid-template-columns:230px 1fr;
+  height:16.66%;
+  border-top:1px solid var(--line);
+}
+.trow:first-child{border-top:0}
+.rname{
+  padding:8px 14px;
+  font-size:19px;
+  font-weight:800;
+  border-right:1px solid var(--line);
+  background:rgba(255,255,255,.04);
+}
+.grid{
+  position:relative;
+  background:repeating-linear-gradient(
+    to right,
+    transparent 0,
+    transparent calc(10% - 1px),
+    rgba(255,255,255,.12) calc(10% - 1px),
+    rgba(255,255,255,.12) 10%
+  );
+}
+.bar{
+  position:absolute;
+  top:7px;
+  height:28px;
+  border-radius:3px;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:17px;
+  font-weight:800;
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+}
+.bar.waiting{background:linear-gradient(90deg,#bc151e,#e64a51)}
+.bar.preparing{background:linear-gradient(90deg,#d39300,#ffc928);color:#071a2d}
+.bar.ready{background:linear-gradient(90deg,#0f8a40,#31bc62)}
+.bar.other{background:linear-gradient(90deg,#1462a8,#368de2)}
+.nowLine{
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:#ff2933;
+  z-index:5;
+}
+.summary{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1.2fr;
+  gap:18px;
+  margin-top:18px;
+}
+.sum{
+  border-radius:10px;
+  padding:16px 20px;
+  font-size:24px;
+  font-weight:800;
+  background:rgba(255,255,255,.08);
+  text-align:center;
+}
+.sum b{
+  display:block;
+  font-size:38px;
+}
+.readyBox{background:rgba(21,148,71,.65)}
+.preparingBox{background:rgba(245,180,0,.65)}
+.waitingBox{background:rgba(217,31,42,.70)}
+.updateBox{background:rgba(23,114,201,.55)}
