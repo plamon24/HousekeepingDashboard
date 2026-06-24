@@ -55,8 +55,33 @@ function card(item){
 
 function renderColumn(id, items){
   const el = document.getElementById(id);
-  const html = items.slice(0,2).map(card).join("");
+  const html = items.map(card).join("");
   el.innerHTML = html || `<div class="card empty">ไม่มีรายการ</div>`;
+}
+
+function autoFitList(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+
+  const levels = ["fitNormal", "fitSmall", "fitXs", "fitTiny", "fitMicro"];
+  el.classList.remove(...levels);
+
+  for(const cls of levels){
+    el.classList.add(cls);
+
+    if(el.scrollHeight <= el.clientHeight && el.scrollWidth <= el.clientWidth){
+      return;
+    }
+
+    el.classList.remove(cls);
+  }
+
+  // ระดับเล็กสุดแล้ว ถ้ายังล้น ให้คงขนาดเล็กสุดไว้ และซ่อนเฉพาะส่วนที่เกินกรอบ
+  el.classList.add("fitMicro");
+}
+
+function autoFitAllLists(){
+  ["waitingList", "preparingList", "readyList"].forEach(autoFitList);
 }
 
 function renderTimeline(items){
@@ -101,6 +126,12 @@ function render(data){
   document.getElementById("lastUpdate").textContent = new Date().toLocaleTimeString("th-TH", {hour:"2-digit", minute:"2-digit"});
 
   renderTimeline(approved);
+
+  // ปรับขนาดตัวอักษร/ระยะห่างอัตโนมัติ เมื่อรายการเยอะจนตกจอ TV
+  requestAnimationFrame(() => {
+    autoFitAllLists();
+    setTimeout(autoFitAllLists, 80);
+  });
 }
 
 async function loadData(){
@@ -118,3 +149,4 @@ updateClock();
 loadData();
 setInterval(updateClock, 1000);
 setInterval(loadData, REFRESH_MS);
+window.addEventListener("resize", autoFitAllLists);
